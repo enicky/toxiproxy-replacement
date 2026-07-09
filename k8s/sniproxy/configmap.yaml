@@ -16,7 +16,6 @@ data:
     listen 443 {
         proto tls
         table https_hosts
-        fallback config-service.example.com:443
 
         access_log {
             filename /dev/stdout
@@ -27,7 +26,6 @@ data:
     listen 8883 {
         proto tls
         table mqtt_hosts
-        fallback mqtt-hub.azure.example.com:8883
 
         access_log {
             filename /dev/stdout
