@@ -1,0 +1,21 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: NetworkChaos
+metadata:
+  name: sniproxy-timeout
+  namespace: chaos-testing
+spec:
+  action: delay
+  mode: all
+  duration: 5m
+  selector:
+    namespaces:
+      - app-test
+    labelSelectors:
+      app.kubernetes.io/name: dotnet-client
+  direction: to
+  externalTargets:
+    - sniproxy.sniproxy.svc.cluster.local
+  delay:
+    latency: 10s
+    correlation: "100"
+    jitter: 0ms
